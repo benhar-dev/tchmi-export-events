@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "LIMIT_EVENT_COUNT": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 1000,
+          "configDescription": "DESC_LIMIT_EVENT_COUNT",
+          "propertyOrder": 2
+        }
+      ]
+    },
+    "TARGET_SYSTEMS": {
+      "configDescription": "DESC_TARGET_SYSTEMS",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "configDescription": "DESC_TARGET_SYSTEM",
+        "properties": {
+          "ADDRESS": {
+            "$ref": "tchmi:server#/definitions/adsRoute"
+          },
+          "ENABLED": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [ "ADDRESS", "ENABLED" ]
+      },
+      "default": {
+        "Local": {
+          "ADDRESS": "127.0.0.1.1.1",
+          "ENABLED": true
+        }
+      },
+      "defaultConfigurable": true,
+      "propertyOrder": 1
+    }
+  },
+  "required": [ "TARGET_SYSTEMS", "LIMIT_EVENT_COUNT" ],
+  "type": "object",
+  "additionalProperties": false
+}

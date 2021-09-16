@@ -1,0 +1,30 @@
+﻿{
+  "function": {
+    "name": "ExportEvents",
+    "namespace": "TcHmi.Functions.demo_export_events",
+    "displayName": "ExportEvents",
+    "description": "",
+    "waitMode": "Synchronous",
+    "category": "",
+    "returnValue": {
+      "type": "tchmi:general#/definitions/Null"
+    },
+    "visible": true,
+    "injectContextObject": false,
+    "arguments": [
+      {
+        "name": "Filter",
+        "displayName": "Filter",
+        "type": "tchmi:server#/definitions/eventFilter",
+        "description": "",
+        "defaultValue": "",
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      }
+    ]
+  },
+  "$schema": "../.hmiframework/Schema/FunctionDescription.Schema.json"
+}

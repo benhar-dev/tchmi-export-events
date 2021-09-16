@@ -1,0 +1,48 @@
+{
+  "$schema": "../TcHmiSrv/schema/Language.Schema.json",
+  "locale": "de",
+  "localizedText": {
+    "TARGET_SYSTEMS": "Zielsysteme",
+    "DESC_TARGET_SYSTEMS": "Zielsysteme von denen Ereignisse und Alarme abgefragt werden",
+    "DESC_TARGET_SYSTEM": "Zielsystem",
+    "LIMIT_EVENT_COUNT": "Maximale Anzahl von Events",
+    "DESC_LIMIT_EVENT_COUNT": "Aktive Alarme werden immer importiert, auch wenn dadurch dieses Limit überschritten wird.",
+
+    "ADDRESS": "Adresse",
+    "ENABLED": "Aktiviert",
+
+    "ALARM_REQUIRESCONFIRMATION": "Alarm {0} requires confirmation",
+    "ALARM_RAISED": "Alarm raised: {0}",
+    "ALARM_CLEARED": "Alarm cleared: {0}",
+    "ALARM_DISPOSED": "Alarm disposed: {0}",
+    "ALARM_CONFIRMED": "Alarm confirmed: {0}",
+    "ALARM_INITIALIZED": "Alarm initialized: {0}",
+
+    "CAN_NOT_CREATE_PROXY": "'ITcEventLogger' konnte nicht für Zielsystem {0} instanziiert werden (Code: {1}). Bitte überprüfen Sie, ob die richtige Version des TwinCAT EventLoggers installiert ist.",
+    "GETLOGGEDEVENTS_GETACTIVEALARMS": "'ITcEventLogger.GetLoggedEvents({1})' hat {2} Events zurückgegeben. Davon wurden {3} aktive Alarme ignoriert. 'ITcEventLogger.GetActiveAlarms' hat {4} aktive Alarme zurückgegeben. (Zielsystem: {0})",
+    "TWINCAT_EVENTLOGGER_ERROR": "Fehler des TwinCAT-EventLoggers für das Zielsystem {0} abgefangen: {2} (Code: {1})",
+    "TARGET_SYSTEM_CONNECTED": "Verbindung zu Zielsystem {0} wurde hergestellt",
+    "TARGET_SYSTEM_CONNECT_FAILED": "Verbindung zu Zielsystem {0} konnte nicht hergestellt werden (Code: {1})",
+    "RESET_TEMPORARY_EVENTS": "Zurücksetzen aller temporären Ereignisse",
+    "CALL_CONFIRM": "Rufe 'Confirm' für einen Alarm des Zielsystems {0} auf. Die Alarm-ID ist {1}.",
+    "KNOWN_ALARM_CLEARED": "Ein Alarm des Zielsystems {0} wurde gecleared (Dispose={1}). Die Alarm-ID ist {2}.",
+    "UNKNOWN_ALARM_CLEARED": "Ein Alarm des Zielsystems {0}, der noch nicht bekannt war, wurde cleared (Dispose={1})",
+    "KNOWN_ALARM_CONFIRMED": "Ein Alarm des Zielsystems {0} wurde confirmed (Dispose={1}). Die Alarm-ID ist {2}.",
+    "UNKNOWN_ALARM_CONFIRMED": "Ein Alarm des Zielsystems {0}, der noch nicht bekannt war, wurde confirmed (Dispose={1})",
+    "ACTIVE_ALARM_RAISED_AGAIN": "Der Alarm mit der ID {1} des Zielsystems {0} wurde erneut geraised während er noch aktiv war. Der Status der existierenden Alarm-Instanz wurde geändert.",
+    "NEW_ALARM_RAISED": "Ein Alarm wurde vom Zielsystem {0} geraised. Ihm wurde die Alarm-ID {1} zugewiesen.",
+    "FORGET_EVENT": "Ein Event, das zum Zeitpunkt {1} vom Zielsystem {0} empfangen wurde, wird aus der Datenbank gelöscht",
+
+    "TARGET_NOT_FOUND": "Zielsystem nicht gefunden",
+
+    "connectionState": "Verbindungs-Status",
+    "importedEventsCount": "Importierte Events",
+    "importedMessagesCount": "Importierte Nachrichten",
+    "importedAlarmsCount": "Importierte Alarme",
+    "importedInvalidAlarmsCount": "Importierte ungültige Alarmen",
+    "cachedMessagesCount": "Nachrichten in der Datenbank",
+    "cachedAlarmsCount": "Alarme in der Datenbank",
+    "cachedInvalidAlarmsCount": "Ungültige Alarme in der Datenbank",
+    "activeAlarmsCount": "Aktiver Alarme"
+  }
+}

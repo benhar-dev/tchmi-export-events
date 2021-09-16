@@ -1,0 +1,48 @@
+{
+  "$schema": "../TcHmiSrv/schema/Language.Schema.json",
+  "locale": "en",
+  "localizedText": {
+    "TARGET_SYSTEMS": "Target Systems",
+    "DESC_TARGET_SYSTEMS": "Target systems from which events and alarms are collected",
+    "DESC_TARGET_SYSTEM": "Target System",
+    "LIMIT_EVENT_COUNT": "Limit event count",
+    "DESC_LIMIT_EVENT_COUNT": "Active alarms will always be imported, even if this limit is thereby exceeded.",
+
+    "ADDRESS": "Address",
+    "ENABLED": "Enabled",
+
+    "ALARM_REQUIRESCONFIRMATION": "Alarm {0} requires confirmation",
+    "ALARM_RAISED": "Alarm raised: {0}",
+    "ALARM_CLEARED": "Alarm cleared: {0}",
+    "ALARM_DISPOSED": "Alarm disposed: {0}",
+    "ALARM_CONFIRMED": "Alarm confirmed: {0}",
+    "ALARM_INITIALIZED": "Alarm initialized: {0}",
+
+    "CAN_NOT_CREATE_PROXY": "Creating instance of 'ITcEventLogger' failed for target {0} (Code: {1}). Please check if the correct version of the TwinCAT EventLogger is installed.",
+    "GETLOGGEDEVENTS_GETACTIVEALARMS": "'ITcEventLogger.GetLoggedEvents({1})' returned {2} events, of which {3} active alarms were ignored. 'ITcEventLogger.GetActiveAlarms' returned {4} active alarms. (Target system: {0})",
+    "TWINCAT_EVENTLOGGER_ERROR": "Caught a TwinCAT EventLogger exception for target system {0}: {2} (Code: {1})",
+    "TARGET_SYSTEM_CONNECTED": "Established connection with target system {0}",
+    "TARGET_SYSTEM_CONNECT_FAILED": "Could not establish connection with target system {0} (Code: {1})",
+    "RESET_TEMPORARY_EVENTS": "Resetting all temporary events",
+    "CALL_CONFIRM": "Calling 'Confirm' on alarm of target system {0}. The alarm id is {1}.",
+    "KNOWN_ALARM_CLEARED": "An alarm of target system {0} was cleared (Dispose={1}). The alarm id is {2}.",
+    "UNKNOWN_ALARM_CLEARED": "An alarm of target system {0} that has not been seen before was cleared (Dispose={1})",
+    "KNOWN_ALARM_CONFIRMED": "An alarm of target system {0} was confirmed (Dispose={1}). The alarm id is {2}.",
+    "UNKNOWN_ALARM_CONFIRMED": "An alarm of target system {0} that has not been seen before was confirmed (Dispose={1})",
+    "ACTIVE_ALARM_RAISED_AGAIN": "The alarm with id {1} of target system {0} was raised again while it was still active. The state of the existing alarm instance was changed.",
+    "NEW_ALARM_RAISED": "An alarm was raised by target system {0}. It was assigned the alarm id {1}.",
+    "FORGET_EVENT": "An event that was received by target system {0} at {1} will be removed from the database",
+
+    "TARGET_NOT_FOUND": "Target system not found",
+
+    "connectionState": "Connection state",
+    "importedEventsCount": "Imported events",
+    "importedMessagesCount": "Imported messages",
+    "importedAlarmsCount": "Imported alarms",
+    "importedInvalidAlarmsCount": "Imported invalid alarms",
+    "cachedMessagesCount": "Messages in the database",
+    "cachedAlarmsCount": "Alarms in the database",
+    "cachedInvalidAlarmsCount": "Invalid alarms in the database",
+    "activeAlarmsCount": "Active alarms"
+  }
+}

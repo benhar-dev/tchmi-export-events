@@ -1,0 +1,83 @@
+{
+  "$schema": "../TcHmiSrv/schema/ExtensionSettings.Schema.json",
+  "version": "1.12.748.0",
+  "configVersion": "1.0.0.9",
+  "guid": "63A51718-33F7-4F6B-851A-963E4F3F74BD",
+  "visibility": "AlwaysShow",
+  "symbols": {
+    "Diagnostics": {
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "readOnly": true,
+        "transient": true,
+        "properties": {
+          "TARGET_SYSTEMS": {
+            "readOnly": true,
+            "type": "object",
+            "description": "DESC_TARGET_SYSTEM",
+            "additionalProperties": {
+              "readOnly": true,
+              "type": "object",
+              "properties": {
+                "connectionState": {
+                  "propertyOrder": 1,
+                  "readOnly": true,
+                  "type": "string"
+                },
+                "importedEventsCount": {
+                  "propertyOrder": 2,
+                  "readOnly": true,
+                  "type": "integer"
+                },
+                "importedMessagesCount": {
+                  "propertyOrder": 3,
+                  "readOnly": true,
+                  "type": "integer"
+                },
+                "importedAlarmsCount": {
+                  "propertyOrder": 4,
+                  "readOnly": true,
+                  "type": "integer"
+                },
+                "importedInvalidAlarmsCount": {
+                  "propertyOrder": 5,
+                  "readOnly": true,
+                  "type": "integer"
+                },
+                "cachedMessagesCount": {
+                  "hidden": true,
+                  "propertyOrder": 6,
+                  "readOnly": true,
+                  "type": "integer"
+                },
+                "cachedAlarmsCount": {
+                  "hidden": true,
+                  "propertyOrder": 7,
+                  "readOnly": true,
+                  "type": "integer"
+                },
+                "cachedInvalidAlarmsCount": {
+                  "hidden": true,
+                  "propertyOrder": 8,
+                  "readOnly": true,
+                  "type": "integer"
+                },
+                "activeAlarmsCount": {
+                  "propertyOrder": 9,
+                  "readOnly": true,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "connectionState"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "productVersion": "1.12.748.0",
+  "signature": "GgJSqual2d7LO2XKowPnWGrPmVpKGiAtfGjT8SfnC8V1Km3k/dscStiRpPCKgThCXcBKfzNU5I9/i1X+4pptOlFveuaozjpSw9NXAwi4GVOpUI2A9xrc9YYeYcyajOi2ZycuGZHEiDahgghYXXCUJIpsAYNnRRoovjO/8bMRnA3A2affkwkM/tmCCgqzmtg5T8Y6ygHuAi2rr/L1bfa9gSYOzULsE/YdNWgsWlr3tDbZcW/yuoMFhuGzkyypPr5q74/jcNEM5mZGi0JcGEs+L24NeDVAtAbLnLae+sU7UOFJy29ywjKCCMxzTJPPiJ3R45R6ODeLxcj5MFymeGxeiw=="
+}
