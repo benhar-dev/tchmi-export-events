@@ -31,8 +31,7 @@
     "DIAGNOSTICS_DOMAINS": [],
     "DISCOVERY": 2,
     "ENDPOINTS": [
-        "http://10.0.0.12:13000",
-        "http://10.0.0.12:3000",
+        "http://127.0.0.1:13000",
         "http://127.0.0.1:3000"
     ],
     "ETAGENABLED": true,

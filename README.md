@@ -29,115 +29,128 @@ The following section of code is called on the "Export to CSV" button press.  Yo
 
 ```javascript
 function ExportEvents(Filter) {
-  if (TcHmi.Server.isWebsocketReady()) {
-    // make request for all events whos domain is TcHmiEventLogger
-    var request = {
-      requestType: "ReadWrite",
-      commands: [
-        {
-          commandOptions: ["SendErrorMessage"],
-          symbol: "ListEvents",
-          orderBy: "timeRaised DESC",
-          filter: [
-            { path: "type", comparator: "!=", value: 2 },
-            { logic: "AND" },
-            [{ path: "domain", comparator: "==", value: "TcHmiEventLogger" }],
-          ],
-          filterMap: [],
-        },
-      ],
-    };
 
-    // use either the passed in filter or use no filter
-    request.commands[0].filter = Filter || [];
+    if (TcHmi.Server.isWebsocketReady()) {
 
-    // send the request
-    TcHmi.Server.request(request, function (data) {
-      if (data.error !== TcHmi.Errors.NONE) {
-        return;
-      }
-      var response = data.response;
-      if (!response || response.error !== undefined) {
-        return;
-      }
-      var command = response.commands[0];
-      if (!command || command.error !== undefined) {
-        return;
-      }
-      var events = command.readValue;
-      if (!events) {
-        return;
-      }
+        var request = {
+            'requestType': 'ReadWrite',
+            'commands': [{
+                "commandOptions": ["SendErrorMessage"],
+                "symbol": "ListEvents",
+                "orderBy": "timeRaised DESC",
+                "filterMap": []
+            }]
+        };
 
-      // Uncomment here to see the content of an event.
-      //console.log(events[0]);
+        // make request for all events whos domain is TcHmiEventLogger 
+        var defaultFilter = [{
+                "path": "type",
+                "comparator": "!=",
+                "value": 2
+            },
+            {
+                "logic": "AND"
+            },
+            [{
+                "path": "domain",
+                "comparator": "==",
+                "value": "TcHmiEventLogger"
+            }]
+        ]
 
-      var csv = events.map(function (event) {
-        return [
-          event.domain,
-          event.localizedString,
-          event.name,
-          event.payload.domain,
-          event.payload.name,
-          event.payload.params.data,
-          event.payload.params.eventClass,
-          event.payload.params.eventClassName,
-          event.payload.params.eventId,
-          event.payload.params.numArguments,
-          event.payload.params.sourceId,
-          event.payload.params.sourceName,
-          event.payload.params.targetName,
-          event.payload.params.types,
-          event.payload.severity,
-          event.payload.timeRaised,
-          event.payloadType,
-          event.timeReceived,
-        ];
-      });
+        // use either the passed in filter or use default filter
+        request.commands[0].filter = Filter || defaultFilter;
 
-      // add the header fields
-      var header = [
-        "event.domain",
-        "event.localizedString",
-        "event.name",
-        "event.payload.domain",
-        "event.payload.name",
-        "event.payload.params.data",
-        "event.payload.params.eventClass",
-        "event.payload.params.eventClassName",
-        "event.payload.params.eventId",
-        "event.payload.params.numArguments",
-        "event.payload.params.sourceId",
-        "event.payload.params.sourceName",
-        "event.payload.params.targetName",
-        "event.payload.params.types",
-        "event.payload.severity",
-        "event.payload.timeRaised",
-        "event.payloadType",
-        "event.timeReceived",
-      ];
+        // send the request
+        TcHmi.Server.request(request, function(data) {
 
-      csv.unshift(header);
+            if (data.error !== TcHmi.Errors.NONE) {
+                return;
+            }
+            var response = data.response;
+            if (!response || response.error !== undefined) {
+                return;
+            }
+            var command = response.commands[0];
+            if (!command || command.error !== undefined) {
+                return;
+            }
+            var events = command.readValue
+            if (!events) {
+                return;
+            }
 
-      // convert to string
-      var csv_as_string = csv.join("\r\n");
-      var file = new Blob([csv_as_string]);
-      var url = URL.createObjectURL(file);
-      var element = document.createElement("a");
+            // Uncomment here to see the content of an event.
+            //console.log(events[0]);
 
-      element.setAttribute("href", url);
-      element.setAttribute("download", "events.csv");
-      element.style.display = "none";
+            var csv = events.map(function(event) {
+                return [
+                    event.domain,
+                    event.localizedString,
+                    event.name,
+                    event.payload.domain,
+                    event.payload.name,
+                    event.payload.params.data,
+                    event.payload.params.eventClass,
+                    event.payload.params.eventClassName,
+                    event.payload.params.eventId,
+                    event.payload.params.numArguments,
+                    event.payload.params.sourceId,
+                    event.payload.params.sourceName,
+                    event.payload.params.targetName,
+                    event.payload.params.types,
+                    event.payload.severity,
+                    event.payload.timeRaised,
+                    event.payloadType,
+                    event.timeReceived
+                ];
+            })
 
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
+            // add the header fields
+            var header = [
+                "event.domain",
+                "event.localizedString",
+                "event.name",
+                "event.payload.domain",
+                "event.payload.name",
+                "event.payload.params.data",
+                "event.payload.params.eventClass",
+                "event.payload.params.eventClassName",
+                "event.payload.params.eventId",
+                "event.payload.params.numArguments",
+                "event.payload.params.sourceId",
+                "event.payload.params.sourceName",
+                "event.payload.params.targetName",
+                "event.payload.params.types",
+                "event.payload.severity",
+                "event.payload.timeRaised",
+                "event.payloadType",
+                "event.timeReceived"
+            ];
 
-      setTimeout(function () {
-        URL.revokeObjectURL(url);
-      }, 1000 * 60);
-    });
-  }
+            csv.unshift(header);
+
+            // convert to string
+            var csv_as_string = csv.join('\r\n');
+            var file = new Blob([csv_as_string]);
+            var url = URL.createObjectURL(file);
+            var element = document.createElement("a");
+
+            element.setAttribute('href', url);
+            element.setAttribute('download', "events.csv");
+            element.style.display = 'none';
+
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+            setTimeout(function() {
+                URL.revokeObjectURL(url);
+            }, 1000 * 60);
+
+        });
+    }
+
 }
 ```
 ## Changing the filter

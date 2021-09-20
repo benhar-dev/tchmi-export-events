@@ -9,7 +9,6 @@
 
                 if (TcHmi.Server.isWebsocketReady()) {
 
-                    // make request for all events whos domain is TcHmiEventLogger 
                     var request = {
                         'requestType': 'ReadWrite',
                         'commands': [
@@ -17,18 +16,26 @@
                                 "commandOptions": ["SendErrorMessage"],
                                 "symbol": "ListEvents",
                                 "orderBy": "timeRaised DESC",
-                                "filter": [
-                                  {"path": "type","comparator": "!=","value": 2},
-                                  {"logic": "AND"},
-                                  [{"path": "domain", "comparator": "==","value": "TcHmiEventLogger"}]
-                                ],
                                 "filterMap": []
                             }
                         ]
                     };
 
-                    // use either the passed in filter or use no filter
-                    request.commands[0].filter = Filter || [];
+                    // make request for all events whos domain is TcHmiEventLogger 
+                    var defaultFilter = [
+                        { "path": "type", "comparator": "!=", "value": 2 },
+                        { "logic": "AND" },
+                        [
+                            {
+                                "path": "domain",
+                                "comparator": "==",
+                                "value": "TcHmiEventLogger"
+                            }
+                        ]
+                    ]
+
+                    // use either the passed in filter or use default filter
+                    request.commands[0].filter = Filter || defaultFilter;
 
                     // send the request
                     TcHmi.Server.request(request, function (data) {
@@ -117,12 +124,6 @@
 
                     });
                 }
-
-
-               
-
-
-
 
             }
             demo_export_events.ExportEvents = ExportEvents;
