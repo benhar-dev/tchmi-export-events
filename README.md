@@ -156,6 +156,16 @@ function ExportEvents(Filter) {
 ## Changing the filter
 ![image](./docs/Images/Screenshot2.png)
 
+## Comments, DescriptionUrls and DescriptionText
+Just as a handy extra note, you can access these using the following javascript.
+```javascript
+params.details.Comment.text
+params.details.DescriptionUrl.text
+params.details.DescriptionText.text
+```
+You can also add these to an Event grid by adding a custom column and using the path seporated by ::
+![image](https://user-images.githubusercontent.com/53424421/168231008-b5e3903f-7c0e-45be-9ff8-5eb068a71e3d.png)
+
 ## Versions
 * TcXaeShell 3.1.4024.17
 * TE2000 1.12.746.3
